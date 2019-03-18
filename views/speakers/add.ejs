@@ -1,0 +1,50 @@
+<%include ../partials/admin/header%>
+<body>
+    <div class="modal-dialog">
+		<div class="modal-content">
+			
+			<hr />
+			<div class="modal-body">
+				<form   action="/speakers/add" method="post" role="form" enctype="multipart/form-data" >
+					<input type="text" name="id" required class="form-control" placeholder="ID" /><br/>			
+            	<input type="text" name="name" required class="form-control" placeholder="UserName" /><br/>
+						<input type="password" name="password" id="password" required class="form-control" placeholder="Password" /><br/>
+					<input type="Password" name="confirmPassword" id="confirm_password" required  class="form-control" placeholder="Confirm Password" /><br/>
+					<input type="email" name="mail" class="form-control" placeholder="Email"/><br/>
+					<input type="date" name="date" required class="form-control" placeholder="BirthDate" /><br/>
+					<input type="text" name="job" required class="form-control" placeholder="Your Job" /><br/>
+					gender: <div class="form-check-inline">
+							<input type="radio" name="gender" value="male" class="form-check-input"/><label class="form-check-label">Male</label>
+						</div>
+						<div class="form-check-inline">
+							<input type="radio" name="gender" value="female" class="form-check-input" /><label class="form-check-label">Female</label>
+						</div><br/>
+					<input type="text" name="city" required class="form-control" placeholder="City"/><br/>
+					<input type="text" name="street" required class="form-control" placeholder="Street"/><br/>
+					<input type="text" name="building" required class="form-control" placeholder="Building" /><br/>
+					
+
+							</div>
+							<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon">
+										<span class="glyphicon glyphicon-lock"></span>
+										</span>
+										<input type="file" name="speakerImage" class="form-control" />
+			
+									</div>
+			
+								</div>
+
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-success btn-lg" >Add Speaker</button>
+								
+							</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+<%include ../partials/admin/footer%>

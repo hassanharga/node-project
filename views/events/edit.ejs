@@ -1,0 +1,57 @@
+<%include ../partials/admin/header%>
+<body>
+        <div class="container">
+                <div class="col-8">
+        <form action="/events/edit/<%=event._id%>"" method="POST" style="margin-left: 300px">
+            <div class="form-group">
+              <label for="exampleFormControlInput1" class="text-primary">ID</label>
+              <input type="text" class="form-control" name="id" disabled value=<%=event._id%> placeholder="ID"/>
+            </div>
+            <br/>
+            <div class="form-group">
+                    <label for="exampleFormControlInput1" class="text-primary">Title</label>
+                    <input type="text" class="form-control" name="title" value=<%=event.title%> placeholder="Title"/>
+            </div>
+            <br/>
+            <div class="form-group">
+                        <label for="exampleFormControlInput1" class="text-primary">Event Date</label>
+                        <input type="date" class="form-control" name="date" placeholder="Title" required value=<%=event.title%>/>
+           </div>
+           <br/>
+            <div class="form-group">
+                    <label for="exampleFormControlSelect1" class="text-primary">Main Speaker</label>
+                    <select class="form-control" name="mainSpeaker">
+                            <% speakers.forEach((speaker)=>{%>
+                                        <%if(speaker._id==event.mainSpeaker._id){%>
+                                        <option value="<%=speaker._id%>" selected><%=speaker.Name%></option>
+                                        <%}else{%>
+                                        <option value="<%=speaker._id%>" ><%=speaker.Name%></option>
+                                                <%}%>
+                                    <%})%> -->
+                                
+
+                                    
+                                       
+                    </select>
+                    <br/>
+                    <label for="exampleFormControlSelect1" class="text-primary">Other Speaker</label>
+                    <select class="form-control" name="otherSpeakers" multiple>
+                                
+                                    <% speakers.forEach((speaker)=>{%>
+                                     <%if(event.others.find((ele)=>{%>
+                                             <%   return ele._id === speaker._id%>
+                                           <% })){%>
+                                                <option value="<%=speaker._id%>" selected><%=speaker.Name%></option>
+                
+                                           <% } else{%>
+                                                <option value="<%=speaker._id%>"><%=speaker.Name%></option>
+                                           <% }%>
+                                           <%})%>
+                    </select>
+                  </div>
+            <input type="submit" class="btn btn-success" value="Add Event"/>
+          </form>
+        </div>
+</div>
+
+<%include ../partials/admin/footer%>

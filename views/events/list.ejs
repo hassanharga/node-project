@@ -1,0 +1,32 @@
+
+<%include ../partials/admin/header%>
+
+    </head>
+    <body>
+            
+        <h3 class="text-success"> events List </h3>
+        <table style="border:3px solid green"  class="table table-dark">
+                <tr><th>id</th><th>title</th><th>date</th><th>Speaker Name</th><th>Other Speakers</th><th>action</th></tr>
+                <% events.forEach((event)=>{%>
+                    <tr>
+                        <td><%=event._id%></td>
+                        <td><%=event.title%></td>
+                        <td><%=event.date%></td>
+                        <td><%=event.mainSpeaker.Name%>  (<%=event.accepted%>)</td>
+                        <td>
+                            <ul>
+                                    <%event.others.forEach((speaker)=>{%>
+                                        <li><%=speaker.Name%></li>
+                                    <%})%>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="/events/edit/<%=event._id%>">Edit</a>
+                            <a class="btn btn-danger" href="/events/delete/<%=event._id%>">Delete</a>
+                        </td>
+                    </tr>
+                <%})%>
+               
+        
+       </table>
+<%include ../partials/admin/footer%>

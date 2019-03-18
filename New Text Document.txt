@@ -1,0 +1,94 @@
+<select class="form-control" name="mainSpeaker">
+                              <option value="<%=event.mainSpeaker._id%>"><%=event.mainSpeaker.Name%></option>
+                    </select>
+                    <br/>
+                    <label for="exampleFormControlSelect1" class="text-primary">Other Speaker</label>
+                    <select class="form-control" name="otherSpeakers" multiple>
+                                <% event.others.forEach((ele)=>{%>
+                                        <option value="<%=ele._id%>"><%=ele.Name%></option>
+                                    <%})%>
+                    </select>
+
+
+<%if(<%=speaker._id%>==<%=event.mainSpeaker._id%>){}%>
+
+
+
+
+
+
+	---------------------------------------------------------------
+  <div class="modal-dialog" >
+		<div class="modal-content">
+			
+			<hr />
+			<div class="modal-body">
+				<form action="/speakers/edit/<%=speaker._id%>" method="post" enctype="multipart/form-data"  role="form" >
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<input type="text" name="id" value="<%=speaker._id%>"  class="form-control" placeholder="ID" disabled />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-lock"></span>
+							</span>
+							<input type="text" name="name" value="<%=speaker.Name%>" class="form-control" placeholder="Name"  />
+
+						</div>
+
+                    </div>
+                    <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+								</span>
+								<img src="/images/<%=speaker.image%>" style="width:200px;height:200px"/>
+                                <input type="file" name="speakerImage" class="form-control" />
+    
+                            </div>
+    
+                        </div>
+
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-success btn-lg" >Update Speaker</button>
+						
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+date.toDateString()
+
+
+
+//user events
+<tr><th>id</th><th>title</th><th>date</th><th>Other Speakers</th></tr>
+              
+                  <tr>
+                      <td><%=event._id%></td>
+                      <td><%=event.title%></td>
+                      <td><%=event.date%></td>
+                      <td>
+                          <ul>
+                                  <%event.others.forEach((speaker)=>{%>
+                                      <li><%=speaker.Name%></li>
+                                  <%})%>
+                          </ul>
+                      </td>
+                      <td>
+                          <a class="btn btn-primary" href="/events/edit/<%=event._id%>">Edit</a>
+                          <a class="btn btn-danger" href="/events/delete/<%=event._id%>">Delete</a>
+                      </td>
+                  </tr>
+              
+             
+      
+     </table>
+       

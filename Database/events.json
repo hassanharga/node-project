@@ -1,0 +1,3 @@
+{"_id":1,"date":{"$date":"2019-01-16T02:21:23.150Z"},"others":[2,3],"title":"js","mainSpeaker":1,"__v":0}
+{"_id":2,"date":{"$date":"2019-01-16T02:21:23.150Z"},"others":[1,3],"title":"html","mainSpeaker":2,"__v":0,"accepted":"refused"}
+{"_id":3,"date":{"$date":"2019-01-18T15:08:35.193Z"},"mainSpeaker":2,"accepted":"refused","others":[3,4],"title":"bootstrap","__v":0}

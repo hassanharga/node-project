@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body{
+        background-image: url("/images/admin.jpg");
+        background-repeat: no-repeat;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    
+    
+  </head>
+
+  <body>
+        <div style="background-color: red;">
+                <%=msg%>
+            </div>
+      <div class="container">
+          <div class="col-4 offset-4">
+    <form class="form-signin mt-5" action="/login" method="POST">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <input type="text" name="userName" value="hassan" class="form-control" placeholder="UserName" required><br/>
+      <input type="password" name="userPassword"  value="123" class="form-control" placeholder="Password" required><br/>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      
+    </form>
+</div>
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Plugin JavaScript -->
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
+  <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  
+  <!-- Custom scripts for this template -->
+  <script src="/js/creative.min.js"></script>
+  
+  </body>
+  
+  </html>

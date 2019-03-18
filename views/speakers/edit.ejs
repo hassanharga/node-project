@@ -1,0 +1,85 @@
+<html>
+    <head>
+       
+<script src="/jquery.min.js"></script>        
+<link href="/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="/js/bootstrap.js"></script>
+<style>
+    /* body{
+      background-image: url("/img/intro-bg.jpg");
+      
+    } */
+  </style>
+</head>
+<body>
+
+  
+      <div class="container">
+            <div class="col-4 offset-4">
+          <h1 class="h3 mb-3 font-weight-normal">Edit Your Data</h1>
+    <form action="/speakers/edit/<%=speaker._id%>" method="POST"  class="form-signin" enctype="multipart/form-data">
+        <input type="text" name="id" required class="form-control" disabled placeholder="ID" value="<%=speaker._id%>"/><br/>
+        <input type="text" name="name" required class="form-control" placeholder="UserName" value="<%=speaker.Name%>"/><br/>
+        <input type="password" name="password" id="password" required class="form-control" placeholder="Password" value="<%=speaker.password%>"/><br/>
+        <input type="password" name="confirmPassword" id="confirm_password" required  class="form-control" placeholder="Confirm Password"/><br/>
+        <input type="email" name="mail" class="form-control" placeholder="Email" value="<%=speaker.mail%>"/><br/>
+        <input type="date" name="date" required class="form-control" placeholder="BirthDate" value="<%=speaker.date%>"/><br/>
+         <input type="text" name="job" required class="form-control" placeholder="Your Job" value="<%=speaker.job%>"/><br/>
+        gender: <div class="form-check-inline" >
+                <input type="radio" name="gender" class="form-check-input" value="male" checked/><label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check-inline">
+                <input type="radio" name="gender" class="form-check-input" value="female" /><label class="form-check-label">Female</label>
+            </div><br/>
+        <input type="text" name="city" required class="form-control" placeholder="City" value="<%=speaker.address.city%>"/><br/>
+        <input type="text" name="street" required class="form-control" placeholder="Street" value="<%=speaker.address.street%>"/><br/>
+        <input type="text" name="building" required class="form-control" placeholder="Building" value="<%=speaker.address.building%>"/><br/>
+            <br/>
+        <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock"></span>
+                    </span>
+                    <img src="/images/<%=speaker.image%>" style="width:200px;height:200px"/>
+                    <input type="file" name="speakerImage" class="form-control" />
+
+                </div>
+
+            </div>
+
+        <input type="submit" value="Register" class="btn btn-lg btn-primary btn-block"/>
+    </form>
+</div>
+</div>
+    <script>
+        let password = document.getElementById("password"),
+            confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+        }
+    
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+ 
+ <!-- Bootstrap core JavaScript -->
+ <script src="/vendor/jquery/jquery.min.js"></script>
+ <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+ <!-- Plugin JavaScript -->
+ <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+ <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
+ <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+ 
+ <!-- Custom scripts for this template -->
+ <script src="/js/creative.min.js"></script>
+ 
+ </body>
+ 
+ </html>

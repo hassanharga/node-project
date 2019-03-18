@@ -1,0 +1,124 @@
+<html>
+    <head>
+       
+
+<script src="/js/jquery.min.js"></script>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="/js/bootstrap.js"></script>
+
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Speaker Profile</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                        <a class="nav-link" href="/" >Home</a>
+                </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/speakers/edit/<%=speaker._id%>" >Edit</a>
+            </li>
+            <li class="nav-item">
+                <input type="button" class="btn btn-secondary" id="btn" value="My Data" data-toggle="modal" data-target="#mymodal"/>
+              </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                        <a class="nav-link " href="/logout">logout</a>
+                </li>
+           </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Welcome <%=userName%> </button>
+          </form>
+        </div>
+      </nav>
+      <h3> Your Events </h3>
+      <table style="border:3px solid green"  class="table table-dark">
+              <tr><th>title</th><th>date</th><th>Action</th></tr>
+              <% events.forEach((event)=>{%>
+                <tr>
+                    
+                    <td><%=event.title%></td>
+                    <td><%=event.date%></td>
+                    <td>
+                        <!-- <a class="btn btn-primary" href="/events/accept/<%=event._id%>">Accept</a> -->
+                        <a class="btn btn-danger" id="reject<%=event._id%>" >Reject</a>
+                        <script>
+                          $(()=>{
+                            $("#reject<%=event._id%>").click(()=>{
+                                $.ajax({
+                                  url:"http://localhost:8080/events/reject/<%=event._id%>",
+                                  method:"get",
+                                  success:function(result){
+                                    //alert("Done");
+                                    $("#reject<%=event._id%>").parents("tr").remove();
+                                  },
+                                  error:function(error){
+                                    alert("error rejecting event");
+                                  }
+                                })
+                              });
+                          });
+                        </script>
+                    </td>
+                </tr>
+                 
+            <%})%>
+     </table>
+       
+     <div class="modal" id="mymodal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <p class="modal-title">Modal One</p>
+              </div>
+              <div id="mydata" class="modal-body text-center">
+                  
+              </div>
+              
+          </div>
+      </div>
+      </div>
+     
+       
+ 
+
+ 
+ <!-- Custom scripts for this template -->
+ 
+ <script>
+  $(()=>{
+    $("#btn").click(()=>{
+      $.ajax({
+        url:"http://localhost:8080/speakers/getData/<%=speaker._id%>",
+        method:"get",
+        success:function(result){
+          $("#mydata").html(
+            `<p><img src="/images/${result.image}" style="width:200px;height:200px"/><br/>
+               Name : ${result.Name} <br/>
+             mail :${result.mail} <br/>
+             birthdate : ${result.date} <br/>
+             job : ${result.job} <br/>
+             address : ${result.address.city} - ${result.address.street } - ${result.address.building} <br/>
+             </p> ` 
+          )
+        },
+        error:function(err){
+          alert("error fetching data");
+        }
+      })
+    });
+    
+  });
+</script>
+ 
+ </body>
+ 
+ </html>

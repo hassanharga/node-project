@@ -1,0 +1,72 @@
+
+        <%include ../partials/admin/header%>
+        <h3 class="text-success"> Speakers List </h3>
+    <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">image</th>
+                <th scope="col">Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <% speakers.forEach((speaker)=>{%>
+                <tr>
+                  <td><%=speaker._id%></td>
+                  <td><%=speaker.Name%></td>
+                  <td><img src="/images/<%=speaker.image%>" style="width:100px;height:100px"/></td>
+                  <td>
+                    
+                    <a class="btn btn-success" id="myData<%=speaker._id%>" data-toggle="modal" data-target="#mymodal">MyData</a>
+                    <script>
+                      $(()=>{
+                        $("#myData<%=speaker._id%>").click(()=>{
+                          $.ajax({
+                            url:"http://localhost:8080/speakers/getData/<%=speaker._id%>",
+                            method:"get",
+                            success:function(result){
+                              $("#mydata").html(
+                                `<p><img src="/images/${result.image}" style="width:200px;height:200px"/><br/>
+                                   Name : ${result.Name} <br/>
+                                 mail :${result.mail} <br/>
+                                 birthdate : ${result.date} <br/>
+                                 job : ${result.job} <br/>
+                                 address : ${result.address.city} - ${result.address.street } - ${result.address.building} <br/>
+                                 </p> ` 
+                              )
+                            },
+                            error:function(err){
+                              alert("error fetching data");
+                            }
+                          })
+                        });
+                        
+                      });
+                    </script>
+                
+                  
+                    <a class="btn btn-primary" href="/speakers/edit/<%=speaker._id%>">Edit</a>
+                    <a class="btn btn-danger" href="/speakers/delete/<%=speaker._id%>">Delete</a>
+                  </td>
+                </tr>
+              <%})%>
+              </td>
+            </tbody>
+          </table>
+          <div class="modal" id="mymodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title">Modal One</p>
+                    </div>
+                    <div id="mydata" class="modal-body text-center">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+  
+    <br/><%include ../partials/admin/footer%>

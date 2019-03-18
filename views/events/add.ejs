@@ -1,0 +1,42 @@
+<%include ../partials/admin/header%>
+<body>
+    <div class="container">
+        <div class="col-8">
+        <form action="/events/add" method="POST" style="margin-left: 300px">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1" class="text-primary">ID</label>
+                  <input type="text" class="form-control" name="id" placeholder="ID" required/>
+                </div>
+                <br/>
+                <div class="form-group">
+                        <label for="exampleFormControlInput1" class="text-primary">Title</label>
+                        <input type="text" class="form-control" name="title" placeholder="Title" required/>
+                </div>
+                <br/>
+                <div class="form-group">
+                        <label for="exampleFormControlInput1" class="text-primary">Event Date</label>
+                        <input type="date" class="form-control" name="date" placeholder="Title" required/>
+                </div>
+                <br/>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1" class="text-primary" >Main Speaker</label>
+                  <select class="form-control" name="mainSpeaker" required>
+                        <% speakers.forEach((speaker)=>{%>
+                            <option value="<%=speaker._id%>"><%=speaker.Name%></option>
+                        <%})%>
+                  </select>
+                  <br/>
+                  <label for="exampleFormControlSelect1" class="text-primary">Other Speaker</label>
+                  <select class="form-control" name="otherSpeakers" multiple>
+                        <% speakers.forEach((speaker)=>{%>
+                            <option value="<%=speaker._id%>"><%=speaker.Name%></option>
+                        <%})%>
+                  </select>
+                </div>
+                <br/>
+                <input type="submit" class="btn btn-success" value="Add Event"/>
+              </form>
+            </div>
+    </div>
+    
+<%include ../partials/admin/footer%>

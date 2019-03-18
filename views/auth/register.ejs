@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body{
+        background-image: url("/images/admin.jpg");
+        background-repeat: no-repeat;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    
+    
+  </head>
+
+  <body>
+        <div class="container">
+                <div class="col-4 offset-4">
+              <h1 class="h3 mb-3 font-weight-normal">Registeration Page</h1>
+        <form action="/register" method="POST"  class="form-signin" enctype="multipart/form-data">
+            <input type="text" name="id" required class="form-control" required placeholder="ID"/><br/>
+            <input type="text" name="name" required class="form-control" placeholder="UserName"/><br/>
+            <input type="password" name="password" id="password" required class="form-control" placeholder="Password"/><br/>
+            <input type="password" name="confirmPassword" id="confirm_password" required  class="form-control" placeholder="Confirm Password"/><br/>
+            <input type="email" name="mail" class="form-control" placeholder="Email"/><br/>
+            <input type="date" name="date" required class="form-control" placeholder="BirthDate"/><br/>
+             <input type="text" name="job" required class="form-control" placeholder="Your Job"/><br/>
+            gender: <div class="form-check-inline">
+                    <input type="radio" name="gender" class="form-check-input" checked value="male" /><label class="form-check-label">Male</label>
+                </div>
+                <div class="form-check-inline">
+                    <input type="radio" name="gender" class="form-check-input" value="female" /><label class="form-check-label">Female</label>
+                </div><br/>
+            <input type="text" name="city" required class="form-control" placeholder="City" /><br/>
+            <input type="text" name="street" required class="form-control" placeholder="Street"/><br/>
+            <input type="text" name="building" required class="form-control" placeholder="Building" /><br/>
+
+            <input type="file" name="speakerImage"/> <br/><br/>
+
+            <input type="submit" value="Register" class="btn btn-lg btn-primary btn-block"/>
+        </form>
+    </div>
+</div>
+        <script>
+            let password = document.getElementById("password"),
+                confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword(){
+            if(password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+            }
+
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
+ <!-- Bootstrap core JavaScript -->
+ <script src="/vendor/jquery/jquery.min.js"></script>
+ <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+ <!-- Plugin JavaScript -->
+ <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+ <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
+ <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+ 
+ <!-- Custom scripts for this template -->
+ <script src="/js/creative.min.js"></script>
+ 
+ </body>
+ 
+ </html>
